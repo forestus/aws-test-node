@@ -1,26 +1,3 @@
-# aws-test-node
-
-Jenkins Install
-copy all:
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
-    /etc/apt/sources.list.d/jenkins.list'
-sudo apt-get update
-sudo apt-get install jenkins
-
-sudo apt update
-sudo apt search openjdk
-sudo apt install openjdk-11-jdk
-sudo apt install openjdk-11-jdk
-java -version
-sudo systemctl daemon-reload
-sudo systemctl start jenkins
-sudo systemctl status jenkins
-ufw status
-ufw allow 8080
-
-Unlock Port 8080 in Security Groups of Instance.
-
 Nginx, PM2 and Nodejs Install
 
 Actions:
