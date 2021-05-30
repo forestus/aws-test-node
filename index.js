@@ -11,7 +11,7 @@ app.get('/hellow',(req,res)=>{
         Jenkins:'hello im Jenkins!'
     })
     })
-    app.get('/testing',(req,res)=>{
+    app.get('/testing2',(req,res)=>{
         res.json({
             message:'hello word!',
             Jenkins:'hello im Jenkins!'
