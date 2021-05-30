@@ -21,6 +21,7 @@ ufw allow 8080
 
 Unlock Port 8080 in Security Groups of Instance.
 
+
 Nginx, PM2 and Nodejs Install
 
 Actions:
