@@ -122,3 +122,9 @@ server {
     proxy_read_timeout 240s;
     }
 }
+
+REFERS TO:
+https://www.cprime.com/resources/blog/how-to-integrate-jenkins-github/
+https://www.jenkins.io/doc/book/installing/linux/
+https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
+https://pm2.keymetrics.io/docs/tutorials/pm2-nginx-production-setup
