@@ -6,7 +6,10 @@ app.get('/',(req,res)=>{
 res.json({message:'hello word!'})
 })
 app.get('/hellow',(req,res)=>{
-    res.json({message:'hello word!'})
+    res.json({
+        message:'hello word!',
+        Jenkins:'hello im Jenkins!'
+    })
     })
 app.listen(PORT,()=>{
     console.log(`Server running!`)
