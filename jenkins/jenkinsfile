@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                sh 'sudo pm2 l || true'
                 sh 'sudo pm2 stop all  || true'
                 sh 'sudo pm2 delete all  || true'
                 sh 'sudo rm -rf coverage'
                 sh 'sudo rm -rf Build'
                 sh 'sudo rm -rf coverage.zip'
                 sh 'sudo rm -rf node_modules'
+                sh 'sudo rm -rf node'
                 sh 'ls'
                 sh 'sudo mkdir Build'
                 sh 'sudo rsync -Rr * ./Build'
