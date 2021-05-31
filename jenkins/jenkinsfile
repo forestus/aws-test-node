@@ -41,7 +41,7 @@ pipeline {
         stage('Build') {
             steps {
                 // archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
-                dir 'cd Build'
+                sh 'cd Build'
                 sh 'sudo rm -rf Build'
                 // sh 'sudo zip -q -r build.zip *'
             }
