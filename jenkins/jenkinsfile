@@ -41,7 +41,7 @@ pipeline {
         stage('Build') {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
-                sh 'cd Build'
+                dir 'cd Build'
                 sh 'sudo rm -rf Build'
                 sh 'sudo zip -q -r build.zip *'
                 sh 'sudo mv build.zip /home/ubuntu'
@@ -56,11 +56,11 @@ pipeline {
             steps {
                 echo 'Deployed'
                 sh 'sudo rm -rf /home/ubuntu/*'
-                sh 'cd /home/ubuntu'
+                dir 'cd /home/ubuntu'
                 sh 'sudo mkdir node'
                 sh 'sudo unzip -q build.zip -d /home/ubuntu/node'
                 sh 'sudo rm -rf builded.zip'
-                sh 'cd node'
+                dir 'cd node'
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start index.js -f' 
             }
