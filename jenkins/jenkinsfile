@@ -42,8 +42,9 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
                 sh 'cd Build'
-                sh 'sudo zip -q -r builded.zip *'
-                sh 'sudo mv builded.zip /home/ubuntu'
+                sh 'rm -rf Build'
+                sh 'sudo zip -q -r build.zip *'
+                sh 'sudo mv build.zip /home/ubuntu'
             }
         }
         stage('Deploy') {
