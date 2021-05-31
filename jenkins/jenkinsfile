@@ -40,10 +40,10 @@ pipeline {
         stage('Build') {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+                sh 'cd Build'
+                sh 'zip -r builded.zip *'
+                sh 'mv builded.zip /home/ubuntu'
             }
-            sh 'cd Build'
-            sh 'zip -r builded.zip *'
-            sh 'mv builded.zip /home/ubuntu'
         }
         stage('Deploy') {
             when {
