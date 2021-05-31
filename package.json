@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/forestus/aws-test-node#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pm2": "^4.5.6"
   },
   "type": "module",
   "engines": {
