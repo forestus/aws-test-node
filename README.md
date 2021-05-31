@@ -8,6 +8,7 @@ sudo apt-get update
 sudo apt-get install jenkins
 
 sudo apt update
+sudo apt-get install unzip
 sudo apt search openjdk
 sudo apt install openjdk-11-jdk
 sudo apt install openjdk-11-jdk
