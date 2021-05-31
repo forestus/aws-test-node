@@ -24,15 +24,14 @@ pipeline {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
-                sh ''
-                archiveArtifacts artifacts: 'coverage/**', fingerprint: true
+                sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage_${env.BUILD_NUMBER}.zip -@'
+                archiveArtifacts artifacts: 'coverage_*.zip', fingerprint: true
             }
         }
         stage('Build') {
             steps {
                 sh 'make' 
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-                // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'
             }
             post {
         always {
