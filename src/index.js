@@ -4,14 +4,11 @@ const PORT = 3000
 const app = express()
 app.use(express.json())
 app.get('/', (req, res) => {
-  const a = sum(1, 2)
+  const num = sum(1, 2)
   res.json({
     message: 'hello word!',
     Jenkins: 'hello im Jenkins! :D',
-    value: (a + a + a + 1 + 3 + 4 + 5),
-    value2: (a + a + a + 1 + 3 + 4 + 5),
-    value3: (a + a + a + 1 + 3 + 4 + 5)
-
+    value: num
   })
 })
 app.listen(PORT, () => {
