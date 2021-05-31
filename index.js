@@ -8,7 +8,7 @@ app.get('/',(req,res)=>{
     res.json({
         message:'hello word!',
         Jenkins:'hello im Jenkins! :D',
-        value: a
+        value: (a+a+a)
     })
 })
 app.listen(PORT,()=>{
