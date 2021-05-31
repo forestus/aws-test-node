@@ -38,15 +38,15 @@ pipeline {
         //         archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
         //     }
         // }
-        stage('Build') {
-            steps {
-                archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
-                dir 'cd Build'
-                sh 'sudo rm -rf Build'
-                sh 'sudo zip -q -r build.zip *'
-                sh 'sudo mv build.zip /home/ubuntu'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+        //         dir 'cd Build'
+        //         sh 'sudo rm -rf Build'
+        //         sh 'sudo zip -q -r build.zip *'
+        //         sh 'sudo mv build.zip /home/ubuntu'
+        //     }
+        // }
         stage('Deploy') {
             when {
               expression {
