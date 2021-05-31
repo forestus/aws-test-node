@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx pm2 start src/index.js",
     "lint": "npx standard --fix",
-    "jestC": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "jestC": "node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test": "npm run jestC -- --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
     "test:verbose": "jest --passWithNoTests  --runInBand",
     "test:unit": "npm test -- -c jest-unit-config.js",
