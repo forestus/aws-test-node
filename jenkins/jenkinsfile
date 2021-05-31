@@ -38,15 +38,14 @@ pipeline {
         //         archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
         //     }
         // }
-        // stage('Build') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
-        //         dir 'cd Build'
-        //         sh 'sudo rm -rf Build'
-        //         sh 'sudo zip -q -r build.zip *'
-        //         sh 'sudo mv build.zip /home/ubuntu'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                // archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+                dir 'cd Build'
+                sh 'sudo rm -rf Build'
+                // sh 'sudo zip -q -r build.zip *'
+            }
+        }
         stage('Deploy') {
             when {
               expression {
@@ -55,17 +54,10 @@ pipeline {
             }
             steps {
                 echo 'Deployed'
-                sh 'sudo rm -rf /home/ubuntu/*'
-                dir("/home/ubuntu") {
-                dir'cd /home/ubuntu'
-                sh 'sudo mkdir node'
-                sh 'sudo unzip -q build.zip -d /home/ubuntu/node'
-                sh 'sudo rm -rf builded.zip'
-                }
-                dir("/home/ubuntu/node") {
+                // sh 'sudo unzip -q build.zip -d ./'
+                // sh 'sudo rm -rf builded.zip'
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start index.js -f' 
-                }
             }
         }
     }
