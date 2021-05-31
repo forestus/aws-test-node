@@ -9,7 +9,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code'
-                sh 'npm test || true'
+                sh 'npm test'
             }
         }
         stage('Run Integration Tests') {
