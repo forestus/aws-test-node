@@ -31,11 +31,12 @@ pipeline {
                 sh 'make' 
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                 // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'                
-                emailext body: '
                 <fileset dir="${coverage.src}" casesensitive="yes">
                 <include name="coverage/**"/> 
                 </fileset>
-                ',
+                emailext body: 
+                "${server.src}"
+                ,
                 subject: 'Coverage Test',
                 to: 'forestus7@gmail.com' 
             }
