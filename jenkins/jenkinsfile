@@ -5,6 +5,9 @@ pipeline {
             steps {
                 sh 'pm2 l'
                 sh 'ls'
+                sh 'mkdir Build'
+                sh 'cp * ./Build'
+                sh 'ls'
                 echo 'Compile the source code' 
                 sh 'npm install'
                 sh 'npm start'
@@ -34,6 +37,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
             }
+
         }
         stage('Deploy') {
             when {
