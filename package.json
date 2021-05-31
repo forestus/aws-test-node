@@ -4,8 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "start": "node src/index.js",
+    "lint": "npx standard --fix",
+    "jestC": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "npm run jestC -- --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
+    "test:verbose": "jest --passWithNoTests  --runInBand",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "repository": {
     "type": "git",
@@ -27,6 +34,8 @@
   },
   "devDependencies": {
     "babel-jest": "^27.0.2",
-    "jest": "^27.0.3"
+    "eslint": "^7.27.0",
+    "jest": "^27.0.3",
+    "standard": "^16.0.3"
   }
 }
