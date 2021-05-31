@@ -18,26 +18,26 @@ pipeline {
                 sh 'sudo npm start'
             }
         }
-        stage('Run Unit Tests') {
-            steps {
-                echo 'Run unit tests from the source code'
-                sh 'sudo npm run test:unit'
-            }
-        }
-        stage('Run Integration Tests') {
-            steps {
-                echo 'Run only crucial integration tests from the source code' 
-                sh 'sudo npm run test:integration'
-            }
-        }
-        stage('Coverage') {
-            steps {
-                echo 'Save the assemblies generated from the compilation' 
-                sh 'sudo npm run test:ci'
-                sh 'sudo zip -q -r coverage.zip coverage'
-                archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
-            }
-        }
+        // stage('Run Unit Tests') {
+        //     steps {
+        //         echo 'Run unit tests from the source code'
+        //         sh 'sudo npm run test:unit'
+        //     }
+        // }
+        // stage('Run Integration Tests') {
+        //     steps {
+        //         echo 'Run only crucial integration tests from the source code' 
+        //         sh 'sudo npm run test:integration'
+        //     }
+        // }
+        // stage('Coverage') {
+        //     steps {
+        //         echo 'Save the assemblies generated from the compilation' 
+        //         sh 'sudo npm run test:ci'
+        //         sh 'sudo zip -q -r coverage.zip coverage'
+        //         archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+        //     }
+        // }
         stage('Build') {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
