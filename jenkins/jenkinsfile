@@ -26,6 +26,7 @@ pipeline {
                 sh 'npm run test:ci'
                 sh 'zip -r coverage.zip coverage'
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+                sh 'ls'
             }
         }
         stage('Build') {
