@@ -20,7 +20,9 @@ ufw allow 8080
 
 Unlock Port 8080 in Security Groups of Instance.
 
-
+config email send
+https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637580740659856318-523595310&rd=1
+https://support.google.com/accounts/answer/185839
 JENKINS CONFIG BUILD
 rm -rf *.tar.gz
 npm install
