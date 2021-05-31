@@ -56,7 +56,7 @@ pipeline {
                 // sh 'sudo rm -rf builded.zip'
                 sh 'ls'
                 sh 'sudo npm install --production'
-                sh 'sudo pm2 start index.js -f' 
+                sh 'sudo pm2 start src/index.js -f' 
             }
         }
     }
