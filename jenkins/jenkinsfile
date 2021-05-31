@@ -2,11 +2,6 @@ pipeline {
     agent any 
     stages {
         stage('Setting the variables values') {
-            steps {
-                 sh '''#!/bin/bash
-                         echo "hello world" 
-                 '''
-            }
         }
         stage('Compile') {
             steps {
@@ -59,7 +54,6 @@ pipeline {
             steps {
                 // sh 'sudo unzip -q build.zip -d ./'
                 // sh 'sudo rm -rf build.zip'
-                sh 'ls'
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start src/index.js -f' 
             }

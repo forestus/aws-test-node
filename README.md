@@ -6,7 +6,7 @@ sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
     /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
 sudo apt-get install jenkins
-
+https://stackoverflow.com/questions/51110083/suppress-scripted-pipelines-output-in-jenkins
 sudo apt update
 sudo apt-get install unzip
 sudo apt search openjdk
