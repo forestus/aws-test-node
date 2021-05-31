@@ -25,7 +25,7 @@ pipeline {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
                 sh 'zip -r coverage.zip coverage'
-                archiveArtifacts artifacts: 'coverage_*.zip', fingerprint: true
+                archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
             }
         }
         stage('Build') {
