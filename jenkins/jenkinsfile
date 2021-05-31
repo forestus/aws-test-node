@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
-                sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage_${env.BUILD_NUMBER}.zip -@'
+                sh `zip -r coverage_${env.BUILD_NUMBER}.zip coverage` 
                 archiveArtifacts artifacts: 'coverage_*.zip', fingerprint: true
             }
         }
