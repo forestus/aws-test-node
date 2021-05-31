@@ -46,6 +46,7 @@ pipeline {
             steps {
                 sh 'cd Build'
                 sh 'sudo rm -rf Build'
+                //ts command to build
                 // sh 'sudo zip -q -r build.zip *'
                 // sh 'sudo unzip -q build.zip -d ./'
                 // sh 'sudo rm -rf build.zip'
