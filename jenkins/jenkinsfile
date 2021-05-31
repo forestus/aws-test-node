@@ -55,10 +55,10 @@ pipeline {
             }
             steps {
                 echo 'Deployed'
-                sh 'sudo rm -rf /home/ubuntunode'
+                sh 'sudo rm -rf /home/ubuntu/node'
                 sh 'cd /home/ubuntu'
                 sh 'sudo mkdir node'
-                sh 'sudo unzip -q build.zip -d /node'
+                sh 'sudo unzip -q build.zip -d /home/ubuntu/node'
                 sh 'sudo rm -rf builded.zip'
                 sh 'cd node'
                 sh 'sudo npm install --production'
