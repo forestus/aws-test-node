@@ -21,7 +21,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code'
-                sh 'npm run test:unit'
+                sh 'sudo npm run test:unit'
             }
         }
         stage('Run Integration Tests') {
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
                 sh 'cd Build'
-                sh 'rm -rf Build'
+                sh 'sudo rm -rf Build'
                 sh 'sudo zip -q -r build.zip *'
                 sh 'sudo mv build.zip /home/ubuntu'
             }
