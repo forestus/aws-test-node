@@ -58,7 +58,7 @@ pipeline {
                 sh 'sudo rm -rf /home/ubuntunode'
                 sh 'cd /home/ubuntu'
                 sh 'sudo mkdir node'
-                sh 'sudo unzip -q build.zip -d node'
+                sh 'sudo unzip -q build.zip -d /node'
                 sh 'sudo rm -rf builded.zip'
                 sh 'cd node'
                 sh 'sudo npm install --production'
