@@ -56,11 +56,13 @@ pipeline {
             steps {
                 echo 'Deployed'
                 sh 'sudo rm -rf /home/ubuntu/*'
-                dir 'cd /home/ubuntu'
+                dir("/home/ubuntu") {
+                dir'cd /home/ubuntu'
                 sh 'sudo mkdir node'
                 sh 'sudo unzip -q build.zip -d /home/ubuntu/node'
                 sh 'sudo rm -rf builded.zip'
-                dir 'cd node'
+                }
+                dir("/home/ubuntu/node") {
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start index.js -f' 
             }
