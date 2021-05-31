@@ -42,7 +42,7 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
                 sh 'cd Build'
-                sh 'sudo zip -r builded.zip *'
+                sh 'sudo zip -q -r builded.zip *'
                 sh 'sudo mv builded.zip /home/ubuntu'
             }
         }
@@ -58,7 +58,7 @@ pipeline {
                 sh 'sudo rm -rf .pm2'
                 sh 'sudo rm -rf node'
                 sh 'sudo mkdir node'
-                sh 'sudo unzip builded.zip -d node'
+                sh 'sudo unzip -q builded.zip -d node'
                 sh 'sudo rm -rf builded.zip'
                 sh 'cd node'
                 sh 'sudo npm install --production'
