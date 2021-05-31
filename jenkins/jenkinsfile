@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                sh 'sudo pm2 l'
-                sh 'sudo pm2 stop all'
-                sh 'sudo pm2 delete all'
+                sh 'sudo pm2 l || true'
+                sh 'sudo pm2 stop all  || true'
+                sh 'sudo pm2 delete all  || true'
                 sh 'sudo rm -rf coverage'
                 sh 'sudo rm -rf Build'
                 sh 'sudo rm -rf coverage.zip'
