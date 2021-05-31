@@ -20,19 +20,13 @@ pipeline {
         //         sh 'npm run test:integration'
         //     }
         // }
-        stage('Sending Coverage') {
+        stage('Coverage') {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
+                sh ''
+                archiveArtifacts artifacts: 'coverage/**', fingerprint: true
             }
-            post {
-        always {
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-        }
-        
-    }
         }
         stage('Build') {
             steps {
@@ -40,6 +34,13 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                 // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'
             }
+            post {
+        always {
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+        }
+    }
         }
         stage('Deploy') {
             when {
