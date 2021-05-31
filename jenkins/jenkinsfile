@@ -24,13 +24,12 @@ pipeline {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
-                <fileset dir="${coverage.src}" casesensitive="yes">
-                <include name="coverage/**"/> 
-                </fileset>
-                emailext body: "${coverage.src}",
-                subject: 'Coverage Test',
-                to: 'forestus7@gmail.com' 
             }
+            post {
+        always {
+            emailext body: 'Coverage Test Attached!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Coverage Test'
+        }
+    }
         }
         stage('Build') {
             steps {
