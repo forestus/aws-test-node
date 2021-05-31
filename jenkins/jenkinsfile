@@ -12,7 +12,6 @@ pipeline {
                 sh 'sudo rm -rf node'
                 sh 'sudo mkdir Build'
                 sh 'sudo rsync -Rr * ./Build'
-                sh 'ls' 
                 sh 'sudo npm install'
                 sh 'sudo npm start'
             }
@@ -39,7 +38,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
                 sh 'cd Build'
                 sh 'sudo rm -rf Build'
                 // sh 'sudo zip -q -r build.zip *'
@@ -53,7 +51,7 @@ pipeline {
             }
             steps {
                 // sh 'sudo unzip -q build.zip -d ./'
-                // sh 'sudo rm -rf builded.zip'
+                // sh 'sudo rm -rf build.zip'
                 sh 'ls'
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start src/index.js -f' 
