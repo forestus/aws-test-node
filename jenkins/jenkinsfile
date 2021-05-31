@@ -9,7 +9,7 @@ pipeline {
                 sh 'rm -rf coverage.zip'
                 sh 'ls'
                 sh 'mkdir Build'
-                sh 'cp -r * ./Build'
+                sh 'rsync -Rr * ./Build'
                 sh 'ls'
                 echo 'Compile the source code' 
                 sh 'npm install'
