@@ -4,6 +4,7 @@ pipeline {
         stage('Compile') {
             steps {
                 sh 'pm2 l'
+                sh 'ls'
                 echo 'Compile the source code' 
                 sh 'npm install'
                 sh 'npm start'
