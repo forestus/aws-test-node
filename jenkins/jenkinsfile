@@ -47,10 +47,6 @@ pipeline {
                 sh 'cd Build'
                 sh 'sudo rm -rf Build'
                 //ts command to build
-                // sh 'sudo zip -q -r build.zip *'
-                // sh 'sudo unzip -q build.zip -d ./'
-                // sh 'sudo rm -rf build.zip'
-                
             }
         }
         stage('Deploy') {
@@ -60,6 +56,7 @@ pipeline {
               }
             }
             steps {
+                //ssh comands to remote deploy
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start src/index.js -f' 
             }
