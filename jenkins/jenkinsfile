@@ -6,17 +6,16 @@ pipeline {
                 sh 'sudo pm2 l'
                 sh 'sudo pm2 stop all'
                 sh 'sudo pm2 delete all'
-                sh 'rm -rf coverage'
-                sh 'rm -rf Build'
-                sh 'rm -rf coverage.zip'
-                sh 'rm -rf node_modules'
+                sh 'sudo rm -rf coverage'
+                sh 'sudo rm -rf Build'
+                sh 'sudo rm -rf coverage.zip'
+                sh 'sudo rm -rf node_modules'
                 sh 'ls'
-                sh 'mkdir Build'
-                sh 'rsync -Rr * ./Build'
-                sh 'ls'
-                echo 'Compile the source code' 
-                sh 'npm install'
-                sh 'npm start'
+                sh 'sudo mkdir Build'
+                sh 'sudo rsync -Rr * ./Build'
+                sh 'ls' 
+                sh 'sudo npm install'
+                sh 'sudo npm start'
             }
         }
         stage('Run Unit Tests') {
@@ -28,14 +27,14 @@ pipeline {
         stage('Run Integration Tests') {
             steps {
                 echo 'Run only crucial integration tests from the source code' 
-                sh 'npm run test:integration'
+                sh 'sudo npm run test:integration'
             }
         }
         stage('Coverage') {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
-                sh 'npm run test:ci'
-                sh 'zip -r coverage.zip coverage'
+                sh 'sudo npm run test:ci'
+                sh 'sudo zip -r coverage.zip coverage'
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
             }
         }
@@ -43,8 +42,8 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
                 sh 'cd Build'
-                sh 'zip -r builded.zip *'
-                sh 'mv builded.zip /home/ubuntu'
+                sh 'sudo zip -r builded.zip *'
+                sh 'sudo mv builded.zip /home/ubuntu'
             }
         }
         stage('Deploy') {
