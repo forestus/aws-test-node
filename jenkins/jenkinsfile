@@ -22,19 +22,19 @@ pipeline {
                 sh 'sudo npm start'
             }
         }
-        stage('Run Unit Tests') {
+        stage('Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code'
                 sh 'sudo npm run test:unit'
             }
         }
-        stage('Run Integration Tests') {
+        stage('Integration Tests') {
             steps {
                 echo 'Run integration tests from the source code' 
                 sh 'sudo npm run test:integration'
             }
         }
-        stage('Coverage') {
+        stage('Coverage Tests') {
             steps {
                 echo 'Save Coverage from Tests' 
                 sh 'sudo npm run test:ci'
