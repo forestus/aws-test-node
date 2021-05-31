@@ -9,6 +9,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code'
+                sh 'npm install'
                 sh 'node --experimental-vm-modules node_modules/jest/bin/jest.js'
             }
         }
