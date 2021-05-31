@@ -55,7 +55,7 @@ pipeline {
             }
             steps {
                 echo 'Deployed'
-                sh 'sudo rm -rf /home/ubuntu/node'
+                sh 'sudo rm -rf /home/ubuntu/*'
                 sh 'cd /home/ubuntu'
                 sh 'sudo mkdir node'
                 sh 'sudo unzip -q build.zip -d /home/ubuntu/node'
