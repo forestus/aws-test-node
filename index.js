@@ -1,5 +1,5 @@
 import express from "express"
-import sum from './sum'
+import sum from "./sum.js"
 const PORT = 3000
 const app = express()
 app.use(express.json())
