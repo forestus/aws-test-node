@@ -1,16 +1,6 @@
 {
-    "extends": "standard",
-      "overrides": [
-        {
-          "files": [
-            "**/*.spec.js",
-            "**/*.spec.jsx",
-            "**/*.test.js",
-            "**/*.test.jsx"
-          ],
-          "env": {
-            "jest": true
-          }
-        }
-      ]
+  "extends": "standard",
+  "env": {
+    "jest": true
   }
+}
