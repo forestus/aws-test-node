@@ -26,9 +26,28 @@ pipeline {
                 sh 'npm run test:ci'
             }
         }
-        stage('Deploy') {
+        stage('Build') {
             steps {
-                echo 'Save the assemblies generated from the compilation'
+                sh 'make' 
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'                
+                emailext body: '
+                <fileset dir="${coverage.src}" casesensitive="yes">
+                <include name="coverage/**"/> 
+                </fileset>
+                ',
+                subject: 'Coverage Test',
+                to: 'forestus7@gmail.com' 
+            }
+        }
+        stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'make publish'
             }
         }
     }
