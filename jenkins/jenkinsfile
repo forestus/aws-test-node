@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'sudo npm run test:ci'
-                sh 'sudo zip -r coverage.zip coverage'
+                sh 'sudo zip -q -r coverage.zip coverage'
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
             }
         }
