@@ -4,7 +4,9 @@ pipeline {
         stage('Compile') {
             steps {
                 sh 'sudo pm2 l'
-                sh 'rm -rf coverage Build'
+                sh 'rm -rf coverage'
+                sh 'rm -rf Build'
+                sh 'rm -rf coverage.zip'
                 sh 'ls'
                 sh 'mkdir Build'
                 sh 'cp -r * ./Build'
