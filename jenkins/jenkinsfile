@@ -53,6 +53,7 @@ pipeline {
             }
             steps {
                 echo 'Deployed'
+                sh 'cd /home/ubuntu'
                 sh 'sudo rm -rf .pm2'
                 sh 'sudo mkdir node'
                 sh 'sudo unzip build.zip -d node'
