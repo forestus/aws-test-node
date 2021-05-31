@@ -22,6 +22,27 @@ ufw allow 8080
 Unlock Port 8080 in Security Groups of Instance.
 
 
+JENKINS CONFIG BUILD
+rm -rf *.tar.gz
+npm install
+tar czf build_version-$BUILD_NUMBER.tar.gz package.json index.js
+
+foi necessário baixar manualmente alguns plugins e instalar no gerenciador de plugins o principal é o postbuildscript
+https://plugins.jenkins.io/postbuildscript/
+JENKINS CONFIG POS BUILD
+archive artefacts: build_version-*.tar.gz
+EXECUTE SHELL:
+sudo pm2 stop index || true
+sudo rm -rf /home/ubuntu/node
+sudo mv build_version-*.tar.gz /home/ubuntu
+cd /home/ubuntu
+sudo mkdir node
+sudo tar xf build_version-*.tar.gz -C node
+sudo rm -rf build_version-*.tar.gz
+cd node
+sudo npm install
+sudo pm2 start index.js
+
 Nginx, PM2 and Nodejs Install
 
 Actions:
@@ -126,6 +147,8 @@ server {
 
 REFERS TO:
 https://www.cprime.com/resources/blog/how-to-integrate-jenkins-github/
+https://www.youtube.com/watch?v=AQClj-lLqRs&list=PLQlWzK5tU-gDyxC1JTpyC2avvJlt3hrIh&index=5&ab_channel=JuriyBuraJuriyBura
+https://www.youtube.com/watch?v=XQt4fzt3bUc&list=RDCMUCSq8iEW2JkpQj7mBU3zYtEA&start_radio=1&t=683s&ab_channel=JuriyBura
 https://www.jenkins.io/doc/book/installing/linux/
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
 https://pm2.keymetrics.io/docs/tutorials/pm2-nginx-production-setup
