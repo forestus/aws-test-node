@@ -2,13 +2,15 @@ pipeline {
     agent any 
     stages {
         stage('Prepare') {
-            sh 'sudo pm2 stop all  || true'
+            steps{
+                sh 'sudo pm2 stop all  || true'
                 sh 'sudo pm2 delete all  || true'
                 sh 'sudo rm -rf coverage'
                 sh 'sudo rm -rf Build'
                 sh 'sudo rm -rf coverage.zip'
                 sh 'sudo rm -rf node_modules'
                 sh 'sudo rm -rf node'
+            }
         }
         stage('Compile') {
             steps {
