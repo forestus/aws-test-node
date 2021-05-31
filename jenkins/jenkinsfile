@@ -3,10 +3,11 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                sh 'pm2 l'
+                sh 'sudo pm2 l'
+                sh 'rm -rf coverage Build'
                 sh 'ls'
                 sh 'mkdir Build'
-                sh 'cp * ./Build'
+                sh 'cp -r * ./Build'
                 sh 'ls'
                 echo 'Compile the source code' 
                 sh 'npm install'
