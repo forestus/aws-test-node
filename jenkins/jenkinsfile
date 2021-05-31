@@ -10,7 +10,6 @@ pipeline {
                 sh 'sudo rm -rf coverage.zip'
                 sh 'sudo rm -rf node_modules'
                 sh 'sudo rm -rf node'
-                sh 'ls'
                 sh 'sudo mkdir Build'
                 sh 'sudo rsync -Rr * ./Build'
                 sh 'ls' 
@@ -53,7 +52,6 @@ pipeline {
               }
             }
             steps {
-                echo 'Deployed'
                 // sh 'sudo unzip -q build.zip -d ./'
                 // sh 'sudo rm -rf builded.zip'
                 sh 'ls'
