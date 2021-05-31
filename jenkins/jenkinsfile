@@ -24,21 +24,19 @@ pipeline {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
                 sh 'npm run test:ci'
+                <fileset dir="${coverage.src}" casesensitive="yes">
+                <include name="coverage/**"/> 
+                </fileset>
+                emailext body: "${coverage.src}",
+                subject: 'Coverage Test',
+                to: 'forestus7@gmail.com' 
             }
         }
         stage('Build') {
             steps {
                 sh 'make' 
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-                // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'                
-                <fileset dir="${coverage.src}" casesensitive="yes">
-                <include name="coverage/**"/> 
-                </fileset>
-                emailext body: 
-                "${server.src}"
-                ,
-                subject: 'Coverage Test',
-                to: 'forestus7@gmail.com' 
+                // sh 'find /coverage -path '*/.*' -prune -o -type f -print | zip ~/coverage.zip -@'
             }
         }
         stage('Deploy') {
