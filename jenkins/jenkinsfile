@@ -1,25 +1,25 @@
 pipeline {
     agent any 
     stages {
-        stage('Compile') {
-            steps {
-                echo 'Compile the source code' 
-                sh 'npm install'
-                sh 'npm start'
-            }
-        }
-        stage('Run Unit Tests') {
-            steps {
-                echo 'Run unit tests from the source code'
-                sh 'npm run test:unit'
-            }
-        }
-        stage('Run Integration Tests') {
-            steps {
-                echo 'Run only crucial integration tests from the source code' 
-                sh 'npm run test:integration'
-            }
-        }
+        // stage('Compile') {
+        //     steps {
+        //         echo 'Compile the source code' 
+        //         sh 'npm install'
+        //         sh 'npm start'
+        //     }
+        // }
+        // stage('Run Unit Tests') {
+        //     steps {
+        //         echo 'Run unit tests from the source code'
+        //         sh 'npm run test:unit'
+        //     }
+        // }
+        // stage('Run Integration Tests') {
+        //     steps {
+        //         echo 'Run only crucial integration tests from the source code' 
+        //         sh 'npm run test:integration'
+        //     }
+        // }
         stage('Sending Coverage') {
             steps {
                 echo 'Save the assemblies generated from the compilation' 
