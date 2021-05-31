@@ -2,9 +2,7 @@ pipeline {
     agent any 
     stages {
         stage('Compile') {
-                def mysh(cmd) {
-                    sh('#!/bin/sh -e\n' + cmd)
-                }
+                sh returnStdout: false; 
             steps {
                 sh 'sudo pm2 stop all  || true'
                 sh 'sudo pm2 delete all  || true'
