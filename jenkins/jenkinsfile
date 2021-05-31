@@ -14,8 +14,8 @@ pipeline {
                 sh 'sudo mkdir Build'
                 sh 'sudo rsync -Rr * ./Build'
                 sh 'ls' 
-                sh 'sudo npm install'
-                sh 'sudo npm start'
+                // sh 'sudo npm install'
+                // sh 'sudo npm start'
             }
         }
         // stage('Run Unit Tests') {
