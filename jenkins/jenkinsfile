@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Prepare') {
             steps{
+                echo 'Stop Service & remove Service Content'
                 sh 'sudo pm2 stop all  || true'
                 sh 'sudo pm2 delete all  || true'
                 sh 'sudo rm -rf coverage'
@@ -13,7 +14,8 @@ pipeline {
             }
         }
         stage('Compile') {
-            steps {
+            steps { 
+                echo 'Run Aplication'
                 sh 'sudo mkdir Build'
                 sh 'sudo rsync -Rr * ./Build'
                 sh 'sudo npm install'
@@ -28,13 +30,13 @@ pipeline {
         }
         stage('Run Integration Tests') {
             steps {
-                echo 'Run only crucial integration tests from the source code' 
+                echo 'Run integration tests from the source code' 
                 sh 'sudo npm run test:integration'
             }
         }
         stage('Coverage') {
             steps {
-                echo 'Save the assemblies generated from the compilation' 
+                echo 'Save Coverage from Tests' 
                 sh 'sudo npm run test:ci'
                 sh 'sudo zip -q -r coverage.zip coverage'
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
@@ -45,6 +47,9 @@ pipeline {
                 sh 'cd Build'
                 sh 'sudo rm -rf Build'
                 // sh 'sudo zip -q -r build.zip *'
+                // sh 'sudo unzip -q build.zip -d ./'
+                // sh 'sudo rm -rf build.zip'
+                
             }
         }
         stage('Deploy') {
@@ -54,8 +59,6 @@ pipeline {
               }
             }
             steps {
-                // sh 'sudo unzip -q build.zip -d ./'
-                // sh 'sudo rm -rf build.zip'
                 sh 'sudo npm install --production'
                 sh 'sudo pm2 start src/index.js -f' 
             }
