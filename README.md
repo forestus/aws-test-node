@@ -40,7 +40,7 @@ sudo mkdir node
 sudo tar xf build_version-*.tar.gz -C node
 sudo rm -rf build_version-*.tar.gz
 cd node
-sudo npm install
+sudo npm install --production
 sudo pm2 start index.js
 
 Nginx, PM2 and Nodejs Install

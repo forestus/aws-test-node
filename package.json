@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,9 @@
   "type": "module",
   "engines": {
     "node": "14.17.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^27.0.2",
+    "jest": "^27.0.3"
   }
 }

@@ -1,11 +1,14 @@
 import express from "express"
+import sum from './sum'
 const PORT = 3000
 const app = express()
 app.use(express.json())
 app.get('/',(req,res)=>{
+    const a = sum(1,2)
     res.json({
         message:'hello word!',
-        Jenkins:'hello im Jenkins! :D'
+        Jenkins:'hello im Jenkins! :D',
+        value: a
     })
 })
 app.listen(PORT,()=>{
