@@ -2,10 +2,10 @@ pipeline {
     agent any 
     stages {
         stage('Compile') {
-            steps {
                 def mysh(cmd) {
                     sh('#!/bin/sh -e\n' + cmd)
                 }
+            steps {
                 sh 'sudo pm2 stop all  || true'
                 sh 'sudo pm2 delete all  || true'
                 sh 'sudo rm -rf coverage'
