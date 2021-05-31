@@ -9,7 +9,7 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code'
-                sudo npm test 
+                npm test 
             }
         }
         stage('Run Integration Tests') {
