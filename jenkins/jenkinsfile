@@ -40,6 +40,8 @@ pipeline {
                 sh 'sudo npm run test:ci'
                 sh 'sudo zip -q -r coverage.zip coverage'
                 archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
+                sh 'sudo pm2 stop all  || true'
+                sh 'sudo pm2 delete all  || true'
             }
         }
         stage('Build') {
