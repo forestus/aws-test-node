@@ -1,9 +1,12 @@
 # aws-test-node
+![image](https://user-images.githubusercontent.com/44713270/120262421-0cb13d80-c270-11eb-80ed-90f4ea85e93b.png)
+
 Jenkins Install
 copy all:
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
     /etc/apt/sources.list.d/jenkins.list'
+    
 sudo apt-get update
 sudo apt-get install jenkins
 https://stackoverflow.com/questions/51110083/suppress-scripted-pipelines-output-in-jenkins
@@ -20,6 +23,7 @@ ufw status
 ufw allow 8080
 
 Unlock Port 8080 in Security Groups of Instance.
+![image](https://user-images.githubusercontent.com/44713270/120262389-01f6a880-c270-11eb-8556-4d5380de07ad.png)
 
 config email send
 https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637580740659856318-523595310&rd=1
